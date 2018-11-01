@@ -4,7 +4,7 @@
     let THREE = global.THREE,
         requestAnimationFrame = global.requestAnimationFrame;
 
-    let renderer, scene, camera, controls, light, material, geometry, radians;
+    let renderer, scene, camera, controls, light, radians;
     let mouse = new THREE.Vector2();
 
     let milkyWay, theSun, mercury, venus, earth, mars, asteroidBelt, asteroid, jupiter, saturn, saturnRing, uranus, neptune;
@@ -83,6 +83,39 @@
     init();
     animate();
 
+    function createBasicMesh(filePath = '', radius, size) {
+        let geometry = new THREE.SphereGeometry(radius, size, size);
+        let material = new THREE.MeshBasicMaterial({
+            map: THREE.ImageUtils.loadTexture(filePath),
+            side: THREE.DoubleSide
+        });
+        return new THREE.Mesh(geometry, material);
+    }
+
+    function createLambertMesh(filePath = '', radius, size) {
+        let geometry = new THREE.SphereGeometry(radius, size, size);
+        let material = new THREE.MeshLambertMaterial({
+            map: THREE.ImageUtils.loadTexture(filePath),
+            shading: THREE.SmoothShading
+        });
+        return new THREE.Mesh(geometry, material);
+    }
+
+    function createRingMesh(filePath = '', transparent, start, end, size) {
+        let geometry = new THREE.RingGeometry(start, end, size);
+        let material = new THREE.MeshLambertMaterial({
+            map: THREE.ImageUtils.loadTexture(filePath),
+            shading: THREE.SmoothShading,
+            side: THREE.DoubleSide,
+            transparent
+        });
+        return new THREE.Mesh(geometry, material);
+    }
+
+    function getRandomNumber(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
     function init() {
         scene = new THREE.Scene();
         scene.fog = new THREE.FogExp2(0x000000, 0.00008);
@@ -105,57 +138,27 @@
         scene.add(light);
 
         //the Milky Way
-        material = new THREE.MeshBasicMaterial({
-            map: THREE.ImageUtils.loadTexture('assets/images/milky-way.jpg'),
-            side: THREE.DoubleSide
-        });
-        geometry = new THREE.SphereGeometry(milkyWaySize, 35, 35);
-        milkyWay = new THREE.Mesh(geometry, material);
+        milkyWay = createBasicMesh('assets/images/milky-way.jpg', milkyWaySize, 35);
         scene.add(milkyWay);
 
         //the Sun
-        material = new THREE.MeshBasicMaterial({
-            map: THREE.ImageUtils.loadTexture('assets/images/sun.jpg'),
-            side: THREE.DoubleSide
-        });
-        geometry = new THREE.SphereGeometry(sunSize, 35, 35);
-        theSun = new THREE.Mesh(geometry, material);
+        theSun = createBasicMesh('assets/images/sun.jpg', sunSize, 35);
         scene.add(theSun);
 
         //Mercury
-        material = new THREE.MeshLambertMaterial({
-            map: THREE.ImageUtils.loadTexture('assets/images/mercury.jpg'),
-            shading: THREE.SmoothShading
-        });
-        geometry = new THREE.SphereGeometry(mercurySize, 15, 15);
-        mercury = new THREE.Mesh(geometry, material);
+        mercury = createLambertMesh('assets/images/mercury.jpg', mercurySize, 15);
         scene.add(mercury);
 
         //Venus
-        material = new THREE.MeshLambertMaterial({
-            map: THREE.ImageUtils.loadTexture('assets/images/venus.jpg'),
-            shading: THREE.SmoothShading
-        });
-        geometry = new THREE.SphereGeometry(venusSize, 15, 15);
-        venus = new THREE.Mesh(geometry, material);
+        venus = createLambertMesh('assets/images/venus.jpg', venusSize, 15);
         scene.add(venus);
 
         //Earth
-        material = new THREE.MeshLambertMaterial({
-            map: THREE.ImageUtils.loadTexture('assets/images/earth.jpg'),
-            shading: THREE.SmoothShading
-        });
-        geometry = new THREE.SphereGeometry(earthSize, 15, 15);
-        earth = new THREE.Mesh(geometry, material);
+        earth = createLambertMesh('assets/images/earth.jpg', earthSize, 15);
         scene.add(earth);
 
         //Mars
-        material = new THREE.MeshLambertMaterial({
-            map: THREE.ImageUtils.loadTexture('assets/images/mars.jpg'),
-            shading: THREE.SmoothShading
-        });
-        geometry = new THREE.SphereGeometry(marsSize, 15, 15);
-        mars = new THREE.Mesh(geometry, material);
+        mars = createLambertMesh('assets/images/mars.jpg', marsSize, 15);
         scene.add(mars);
 
         //Asteroid Belt
@@ -167,11 +170,11 @@
                 asteroidOrbit = getRandomNumber(asteroidOrbitStart, asteroidOrbitEnd),
                 yPos = getRandomNumber(-2, 2);
 
-            geometry = new THREE.SphereGeometry(
+            let geometry = new THREE.SphereGeometry(
                 asteroidSize,
                 getRandomNumber(4, 10),
                 getRandomNumber(4, 10));
-            material = new THREE.MeshLambertMaterial({color:0xeeeeee});
+            let material = new THREE.MeshLambertMaterial({color:0xeeeeee});
             asteroid = new THREE.Mesh(geometry, material);
 
             asteroid.position.y = yPos;
@@ -183,50 +186,22 @@
         }
 
         //Jupiter
-        material = new THREE.MeshLambertMaterial({
-            map: THREE.ImageUtils.loadTexture('assets/images/jupiter.jpg'),
-            shading: THREE.SmoothShading
-        });
-        geometry = new THREE.SphereGeometry(jupiterSize, 25, 25);
-        jupiter = new THREE.Mesh(geometry, material);
+        jupiter = createLambertMesh('assets/images/jupiter.jpg', jupiterSize, 25);
         scene.add(jupiter);
 
         //Saturn
-        material = new THREE.MeshLambertMaterial({
-            map: THREE.ImageUtils.loadTexture('assets/images/saturn.jpg'),
-            shading: THREE.SmoothShading
-        });
-        geometry = new THREE.SphereGeometry(saturnSize, 25, 25);
-        saturn = new THREE.Mesh(geometry, material);
+        saturn = createLambertMesh('assets/images/saturn.jpg', saturnSize, 25);
         scene.add(saturn);
         //Saturn's rings
-        material = new THREE.MeshLambertMaterial({
-            map: THREE.ImageUtils.loadTexture('assets/images/saturn-ring.jpg'),
-            shading: THREE.SmoothShading,
-            side: THREE.DoubleSide
-        });
-        geometry = new THREE.RingGeometry(saturnRingStart, saturnRingEnd, 30);
-        saturnRing = new THREE.Mesh(geometry, material);
+        saturnRing = createRingMesh('assets/images/saturn-ring.jpg', false, saturnRingStart, saturnRingEnd, 30);
         saturn.add(saturnRing);
         saturnRing.rotation.x = 90 * Math.PI / 180;
 
         //Uranus
-        material = new THREE.MeshLambertMaterial({
-            map: THREE.ImageUtils.loadTexture('assets/images/uranus.jpg'),
-            shading: THREE.SmoothShading
-        });
-        geometry = new THREE.SphereGeometry(uranusSize, 20, 20);
-        uranus = new THREE.Mesh(geometry, material);
+        uranus = createLambertMesh('assets/images/uranus.jpg', uranusSize, 20);
         scene.add(uranus);
         //Uranus's rings
-        material = new THREE.MeshLambertMaterial({
-            map: THREE.ImageUtils.loadTexture('assets/images/uranus-ring.png'),
-            shading: THREE.SmoothShading,
-            side: THREE.DoubleSide,
-            transparent: true
-        });
-        geometry = new THREE.RingGeometry(uranusRingStart, uranusRingEnd, 30);
-        uranusRing = new THREE.Mesh(geometry, material);
+        uranusRing = createRingMesh('assets/images/uranus-ring.png', true, uranusRingStart, uranusRingEnd, 30);
         uranus.add(uranusRing);
         //Uranus' wierd positioning
         radians = 0 * Math.PI / 180;
@@ -236,12 +211,7 @@
         uranus.rotation.z = 90 * Math.PI / 180;
 
         //Neptune
-        material = new THREE.MeshLambertMaterial({
-            map: THREE.ImageUtils.loadTexture('assets/images/neptune.jpg'),
-            shading: THREE.SmoothShading
-        });
-        geometry = new THREE.SphereGeometry(neptuneSize, 20, 20);
-        neptune = new THREE.Mesh(geometry, material);
+        neptune = createLambertMesh('assets/images/neptune.jpg', neptuneSize, 20);
         scene.add(neptune);
 
         window.addEventListener('resize', onWindowResize, false);
@@ -329,10 +299,6 @@
         neptune.rotation.y += neptuneRotateSpeed;
 
         renderer.render(scene, camera);
-    }
-
-    function getRandomNumber(min, max) {
-        return Math.random() * (max - min) + min;
     }
 
 }).call(this);
