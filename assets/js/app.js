@@ -7,7 +7,7 @@
     let renderer, scene, camera, controls, light, material, geometry, radians;
     let mouse = new THREE.Vector2();
 
-    let milkyWay, theSun, mercury, venus, earth, mars, asteroidBelt, jupiter, saturn, saturnRing, uranus, neptune;
+    let milkyWay, theSun, mercury, venus, earth, mars, asteroidBelt, asteroid, jupiter, saturn, saturnRing, uranus, neptune;
 
     // planet/sun size = 100,000km : 50 units (sun is ~696342km, r = sunSize = 348.15)
     // AU = 150 mil km : 50 units
@@ -172,7 +172,7 @@
                 getRandomNumber(4, 10),
                 getRandomNumber(4, 10));
             material = new THREE.MeshLambertMaterial({color:0xeeeeee});
-            let asteroid = new THREE.Mesh(geometry, material);
+            asteroid = new THREE.Mesh(geometry, material);
 
             asteroid.position.y = yPos;
             radians = getRandomNumber(0, 360) * Math.PI / 180;
