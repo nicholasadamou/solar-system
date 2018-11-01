@@ -7,7 +7,7 @@ Our solar system built using THREE.js. The planets and their orbital speeds are 
 ![license](https://img.shields.io/apm/l/vim-mode.svg)
 [![Say Thanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/NicholasAdamou)
 
-## Features
+## Technologies
 
 This project uses:
 
