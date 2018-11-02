@@ -300,5 +300,4 @@
 
         renderer.render(scene, camera);
     }
-
 }).call(this);
