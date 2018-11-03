@@ -2,7 +2,7 @@
 
 ![preview](previews/preview.gif)
 
-Our solar system built using THREE.js. The planets and their orbital speeds are roughly to scale, however distances between planets are significantly scaled down (roughly 1/4 the actual distance) in order to provide a more engaging experience.
+Our Solar System built using THREE.js. The planets and their orbital speeds are roughly to scale, however distances between planets are significantly scaled down (roughly 1/4 the actual distance) in order to provide a more engaging experience.
 
 ![license](https://img.shields.io/apm/l/vim-mode.svg)
 [![Say Thanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/NicholasAdamou)
