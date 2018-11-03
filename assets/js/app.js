@@ -9,9 +9,12 @@
 
     let milkyWay, theSun, mercury, venus, earth, mars, asteroidBelt, asteroid, jupiter, saturn, saturnRing, uranus, neptune;
 
-    // planet/sun size = 100,000km : 50 units (sun is ~696342km, r = sunSize = 348.15)
+    // planet/sun size = 100,000km : 50 units
+    //      - The Sun is ~696342km, r = sunSize = 348.15,
     // AU = 150 mil km : 50 units
-    // planet orbital radius = 1AU : 1AU (mercury is 0.4AU from sun = sunSize + (AU * 0.4))
+    // planet orbital radius = 1AU : 1AU
+    //      - Mercury is 0.4AU from the Sun, thus
+    //      mercuryOrbitRadius = sunSize + (AU * 0.4)
     // planet orbit speed = 1km : 0.02 units
 
     let AU = 50;
@@ -120,7 +123,7 @@
         scene = new THREE.Scene();
         scene.fog = new THREE.FogExp2(0x000000, 0.00008);
 
-        camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 100000);
+        camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 1, 100000);
         camera.position.z = 2000;
 
         controls = new THREE.TrackballControls(camera);
