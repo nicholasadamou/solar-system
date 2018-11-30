@@ -25,7 +25,7 @@ let planets = {
     mercury: {
         size: 1.2,
         orbitalRadius: sunSize + (AU * 0.4),
-        angle: getRandomNumber(0, 360),
+        angle: 321.21,
         orbitalSpeed: 0.8,
         rotationSpeed: 0.05,
         meshSize: 15,
@@ -33,7 +33,7 @@ let planets = {
     venus: {
         size: 3,
         orbitalRadius: sunSize + (AU * 0.7),
-        angle: getRandomNumber(0, 360),
+        angle: 191.41,
         orbitalSpeed: 0.7,
         rotationSpeed: -0.05,
         meshSize: 15,
@@ -41,7 +41,7 @@ let planets = {
     earth: {
         size: 3,
         orbitalRadius: sunSize + AU,
-        angle: getRandomNumber(0, 360),
+        angle: 24.65,
         orbitalSpeed: 0.6,
         rotationSpeed: 0.05,
         meshSize: 15,
@@ -49,7 +49,7 @@ let planets = {
     mars: {
         size: 1.6,
         orbitalRadius: sunSize + (AU * 1.5),
-        angle: getRandomNumber(0, 360),
+        angle: 304.76,
         orbitalSpeed: 0.48,
         rotationSpeed: 0.05,
         meshSize: 15,
@@ -57,7 +57,7 @@ let planets = {
     jupiter: {
         size: 34.99,
         orbitalRadius: sunSize + (AU * 5.2),
-        angle: getRandomNumber(0, 360),
+        angle: 127.59,
         orbitalSpeed: 0.26,
         rotationSpeed: 0.05,
         meshSize: 25,
@@ -65,7 +65,7 @@ let planets = {
     saturn: {
         size: 29.1,
         orbitalRadius: sunSize + (AU * 9.5),
-        angle: getRandomNumber(0, 360),
+        angle: 322.06,
         orbitalSpeed: 0.18,
         rotationSpeed: 0.05,
         meshSize: 25,
@@ -73,16 +73,16 @@ let planets = {
     uranus: {
         size: 12.7,
         orbitalRadius: sunSize + (AU * 19.2),
-        angle: getRandomNumber(0, 360),
+        angle: 110.29,
         orbitalSpeed: 0.14,
         rotationSpeed: -0.05,
         meshSize: 20,
-      rotationAxis: 'x',
+        rotationAxis: 'x',
     },
     neptune: {
         size: 12.3,
         orbitalRadius: sunSize + (AU * 30.1),
-        angle: getRandomNumber(0, 360),
+        angle: 163.24,
         orbitalSpeed: 0.1,
         rotationSpeed: 0.05,
         meshSize: 20,
