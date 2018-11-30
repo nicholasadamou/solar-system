@@ -1,7 +1,6 @@
 let global = this;
 
-let THREE = global.THREE,
-    requestAnimationFrame = global.requestAnimationFrame;
+let requestAnimationFrame = global.requestAnimationFrame;
 
 let renderer, scene, camera, controls, light, radians;
 let mouse = new THREE.Vector2();
