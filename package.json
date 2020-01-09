@@ -4,6 +4,6 @@
     "start": "http-server ./"
   },
   "dependencies": {
-    "http-server": "^0.12.0"
+    "http-server": "^0.12.1"
   }
 }
