@@ -31,7 +31,7 @@ Simply run, `yarn start` & visit `localhost:8080`.
 
 ## License
 
-Solar-System is © 2018, Nicholas Adamou.
+Solar-System is © Nicholas Adamou.
 
 It is free software, and may be redistributed under the terms specified in the [LICENSE] file.
 
