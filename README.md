@@ -5,9 +5,6 @@
 Our Solar System built using THREE.js. The planets and their orbital speeds are roughly to scale, however distances between planets are significantly scaled down (roughly 1/4 the actual distance) in order to provide a more engaging experience.
 
 ![license](https://img.shields.io/apm/l/vim-mode.svg)
-[![DevDependencies](https://img.shields.io/david/dev/nicholasadamou/solar-system.svg?style=flat-square)](https://david-dm.org/nicholasadamou/solar-system#info=devDependencies)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=nicholasadamou/solar-system)](https://dependabot.com)
-[![Known Vulnerabilities](https://snyk.io/test/github/nicholasadamou/solar-system/badge.svg?targetFile=package.json)](https://snyk.io/test/github/nicholasadamou/solar-system?targetFile=package.json)
 [![Say Thanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/NicholasAdamou)
 
 ## Technologies
